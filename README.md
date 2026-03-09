@@ -1,209 +1,281 @@
-Absolutely 🔥
-Here’s a **clean, professional, GitHub-ready README.md** for your **CARLA Hybrid Autonomous Driving System** — written in a **developer-friendly style**, **emoji-rich**, and **easy to understand**.
 
-You can **copy-paste this directly as `README.md`** 👇
 
 ---
 
 # 🚗 CARLA Hybrid Autonomous Driving System
 
-**Deep Learning + Classical Planning + Sensors (Camera, LiDAR, Semantic Segmentation)**
+> **Deep Learning + Classical Planning + Multi-Sensor Fusion**
 
-> A **full-stack autonomous driving simulation** built in **CARLA 0.9.10**, combining
-> 🧠 **CNN Behavioral Cloning**, 🗺️ **Global Route Planning**, 📡 **LiDAR Obstacle Avoidance**,
-> 🛣️ **Semantic Road Understanding**, and 🖱️ **Interactive Mission Map UI**.
+A **hybrid autonomous driving system** built using **CARLA Simulator**, combining **Deep Learning Behavioral Cloning**, **Classical Path Planning**, and **Sensor Fusion** for realistic autonomous navigation.
 
----
-
-## 🌟 Key Highlights
-
-✅ End-to-End CNN steering (NVIDIA model)
-✅ Classical path planning (GlobalRoutePlanner)
-✅ Real-time LiDAR obstacle avoidance
-✅ Semantic segmentation for road recovery
-✅ Interactive zoomable & pannable map UI
-✅ Crash recovery with intelligent reverse logic
-✅ Fully synchronous simulation (stable + deterministic)
+This project demonstrates how **modern autonomous vehicles integrate learning-based and rule-based systems** to achieve robust driving behavior.
 
 ---
 
-## 🎥 System Architecture
+# 🌟 Features
+
+✨ **End-to-End CNN Steering**
+✨ **Global Route Planning** using CARLA navigation stack
+✨ **LiDAR-based Obstacle Detection & Avoidance**
+✨ **Traffic Light Detection & Handling**
+✨ **Semantic Segmentation for Road Confidence**
+✨ **Dynamic Interactive Mission Map UI**
+✨ **Collision Detection & Autonomous Recovery**
+✨ **Multiple Camera Views (Front / Rear / Bird Eye / Cinematic)**
+✨ **Synchronous Deterministic Simulation**
+
+---
+
+# 🎥 System Architecture
 
 ```
-Camera (RGB) ──► CNN Model ──► Steering
-                   ▲
+              RGB Camera
                    │
-Global Route ──► Path Steering ─┤
+                   ▼
+          NVIDIA CNN Model
+             (Steering)
                    │
-LiDAR ──► Obstacle Avoidance ───┤
+                   ▼
+Global Route Planner ───► Path Steering
                    │
-PID Controller ──► Throttle / Brake
+                   ▼
+           Sensor Fusion Layer
+     (LiDAR + Traffic Light + Semantic)
+                   │
+                   ▼
+             PID Controller
+        (Throttle / Brake / Steer)
+                   │
+                   ▼
+               CARLA Vehicle
 ```
 
 ---
 
-## 🧠 Technologies Used
+# 🧠 Technologies Used
 
-| Component     | Technology                         |
-| ------------- | ---------------------------------- |
-| Simulator     | CARLA 0.9.10                       |
-| Language      | Python 3.7+                        |
-| Deep Learning | PyTorch                            |
-| Vision        | OpenCV                             |
-| Planning      | CARLA GlobalRoutePlanner           |
-| Sensors       | RGB Camera, Semantic Camera, LiDAR |
-| Control       | PID Controller                     |
+| Component       | Technology                               |
+| --------------- | ---------------------------------------- |
+| Simulator       | CARLA 0.9.10                             |
+| Language        | Python                                   |
+| Deep Learning   | PyTorch                                  |
+| Computer Vision | OpenCV                                   |
+| Path Planning   | CARLA GlobalRoutePlanner                 |
+| Sensors         | RGB Camera, LiDAR, Semantic Segmentation |
+| Control         | PID Controller                           |
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```
-CARLA-Hybrid-Autonomy/
+CARLA-Hybrid-Autonomous-System/
+
+├── main.py
+│   └── Complete autonomous driving pipeline
 │
-├── main.py                  # Main autonomous driving script
 ├── models/
-│   └── converted_model.pth  # Trained NVIDIA CNN model
-├── README.md                # 📘 You are here
+│   └── converted_model.pth
+│
+├── README.md
+│
+└── assets/
+    └── system_architecture.png
 ```
 
 ---
 
-## ⚙️ Prerequisites
+# ⚙️ Requirements
 
-### ✅ Software
+## Software
 
-* **Windows 10/11**
-* **CARLA 0.9.10**
-* **Python 3.7 – 3.9**
-* **PyTorch**
-* **OpenCV**
-* **NumPy**
-
-### ✅ Hardware (Recommended)
-
-* GPU (CUDA supported) 🚀
-* ≥ 8GB RAM
+* Windows 10 / 11
+* Python **3.7 – 3.9**
+* CARLA **0.9.10**
+* PyTorch
+* OpenCV
+* NumPy
 
 ---
 
-## 🔧 Setup Instructions
+# 🔧 Installation
 
-### 1️⃣ Start CARLA Server
+## 1️⃣ Clone Repository
 
 ```bash
-CARLA_0.9.10\WindowsNoEditor\CarlaUE4.exe
+git clone https://github.com/yourusername/CARLA-Hybrid-Autonomous-System.git
+cd CARLA-Hybrid-Autonomous-System
 ```
 
-### 2️⃣ Update Paths in Code
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
+pip install torch torchvision numpy opencv-python
+```
+
+---
+
+## 3️⃣ Start CARLA Simulator
+
+```
+CARLA_0.9.10/WindowsNoEditor/CarlaUE4.exe
+```
+
+---
+
+## 4️⃣ Update Paths
+
+Inside **main.py**
 
 ```python
 CARLA_ROOT = r"E:\CAR-simulator\CARLA_0.9.10\WindowsNoEditor"
 MODEL_PATH = r"E:\CAR-simulator\models\kaggle\converted_model.pth"
 ```
 
-### 3️⃣ Install Python Dependencies
-
-```bash
-pip install torch torchvision opencv-python numpy
-```
-
 ---
 
-## 🚀 Running the System
+# 🚀 Running the Autonomous System
 
 ```bash
 python main.py
 ```
 
-You should see:
+After launching you will see:
 
-* 🪟 **Front camera view**
-* 🗺️ **Mission Control map**
-* 🚗 Vehicle spawned and ready
-
----
-
-## 🖱️ Mission Control – Mouse Controls
-
-| Action     | Control           |
-| ---------- | ----------------- |
-| Zoom Map   | Mouse Scroll      |
-| Pan Map    | Middle Mouse Drag |
-| Set START  | Left Click        |
-| Set END    | Right Click       |
-| Reset View | `R`               |
-| Quit       | `Q`               |
+🪟 **Autonomous driving camera window**
+🗺 **Interactive mission control map**
+🚗 **Vehicle ready for mission**
 
 ---
 
-## 🧠 Driving Logic Explained
+# 🖱 Mission Control (Map UI)
 
-### 🛣️ Path Planning
+| Action          | Control           |
+| --------------- | ----------------- |
+| Zoom            | Mouse Scroll      |
+| Pan             | Middle Mouse Drag |
+| Set Start       | Left Click        |
+| Set Destination | Right Click       |
+| Reset View      | R                 |
+| Quit            | Q                 |
 
-* Uses **GlobalRoutePlanner**
-* Generates smooth waypoint routes
-* Dynamic route trimming for efficiency
+---
 
-### 🤖 CNN Steering
+# 🎥 Camera Views
 
-* NVIDIA end-to-end model
-* Takes RGB camera input
-* Predicts steering angle
+Press **V** to switch camera modes.
 
-### 📡 LiDAR Obstacle Avoidance
+| View     | Description              |
+| -------- | ------------------------ |
+| Front    | Default driving camera   |
+| Rear     | Reverse recovery camera  |
+| Left     | Side view                |
+| Right    | Side view                |
+| Bird Eye | Top-down view            |
+| Chase    | Cinematic following view |
 
-* Detects objects in front ROI
-* Applies emergency steering bias
-* Reduces speed during avoidance
+---
 
-### 🧠 Hybrid Control
+# 🚦 Autonomous Driving Logic
 
-```python
-final_steer = 0.4 * path_steer + 0.6 * cnn_steer
+The system uses **hybrid intelligence** combining:
+
+## 🛣 Path Planning
+
+Uses CARLA's **GlobalRoutePlanner**
+
+Features:
+
+* Waypoint-based routing
+* Dynamic waypoint trimming
+* Smooth trajectory tracking
+
+---
+
+## 🤖 Deep Learning Steering
+
+Based on **NVIDIA Behavioral Cloning Model**
+
+Input:
+
+```
+RGB Camera Image
 ```
 
-Best of **learning + logic** 🧩
+Output:
+
+```
+Steering Angle
+```
+
+The CNN learns human driving behavior from training data.
+
+---
+
+## 📡 LiDAR Obstacle Detection
+
+LiDAR scans the vehicle's front region and detects:
+
+* Vehicles
+* Pedestrians
+* Crossing obstacles
+
+Safety behaviors include:
+
+* Emergency stop
+* Speed reduction
+* Obstacle avoidance steering
+
+---
+
+## 🚦 Traffic Light Handling
+
+Vehicle detects traffic lights using CARLA API.
+
+Behavior:
+
+* Stop on **RED**
+* Slow on **YELLOW**
+* Continue on **GREEN**
 
 ---
 
 ## 🔄 Crash Recovery System
 
-💥 Collision detected →
-↩️ Reverse using rear camera →
-🛣️ Semantic road confidence check →
-🚀 Resume mission automatically
+If collision occurs:
 
-No resets. No teleporting.
-**Real autonomous behavior.**
+```
+Collision Detected
+        ↓
+Reverse using rear camera
+        ↓
+Check road via semantic segmentation
+        ↓
+Realign with lane
+        ↓
+Resume mission
+```
+
+This avoids simulation resets and mimics **real autonomous recovery behavior**.
 
 ---
 
-## 🗺️ Dynamic Map Engine
+# 🗺 Dynamic Map Engine
 
-✨ Features:
+The system includes a **fully interactive map UI**.
 
-* Auto-scaled world map
-* Zoom & pan support
+Features:
+
+* Zoom & pan
 * Live vehicle tracking
 * Route visualization
 * Start & End markers
 
 ---
 
-## 📸 Sensors Used
-
-| Sensor           | Purpose            |
-| ---------------- | ------------------ |
-| RGB Camera       | CNN steering       |
-| Rear Camera      | Reverse recovery   |
-| Semantic Camera  | Road confidence    |
-| LiDAR            | Obstacle detection |
-| Collision Sensor | Crash detection    |
-
----
-
-## 🏁 States & Workflow
+# 🚗 Driving State Machine
 
 ```
 IDLE
@@ -219,54 +291,77 @@ TO_END
 FINISHED
 ```
 
-With **RECOVERING** state on collision 🔁
+Extra states:
+
+```
+RECOVERING
+REALIGN
+```
 
 ---
 
-## 🧪 Tested On
+# 🧪 Tested Configuration
 
-✔ Town03
-✔ Model3 Vehicle
-✔ Fixed 20 FPS
-✔ Synchronous Mode
-
----
-
-## ⚠️ Known Limitations
-
-❌ No traffic light recognition
-❌ No pedestrian prediction
-❌ Not designed for dense urban AI traffic
-❌ Research / learning project (not Level-5 autonomy)
+| Parameter       | Value         |
+| --------------- | ------------- |
+| Town            | Town03        |
+| Vehicle         | Tesla Model 3 |
+| FPS             | 20            |
+| Simulation Mode | Synchronous   |
 
 ---
 
-## 🌱 Future Improvements
+# ⚠️ Limitations
 
-🔹 Traffic light detection via vision
-🔹 Multi-lane behavior planning
-🔹 YOLO / BEV fusion
-🔹 Transformer-based driving model
-🔹 Real-time RL fine-tuning
+This project is designed for **research and learning purposes**.
+
+Current limitations:
+
+* No object detection model (YOLO)
+* No pedestrian behavior prediction
+* No multi-lane behavior planning
+* No reinforcement learning
 
 ---
 
-## 🧑‍💻 Author
+# 🚀 Future Improvements
+
+Possible upgrades:
+
+* YOLO object detection
+* Transformer driving models
+* Multi-lane planning
+* RL-based driving policy
+* Sensor fusion with radar
+* Bird-Eye-View perception
+
+---
+
+# 👨‍💻 Author
 
 **Nikshith**
-🚗 Autonomous Driving & AI Enthusiast
-🧠 Hybrid Intelligence Systems
+
+🚗 Autonomous Driving Enthusiast
+🧠 AI + Robotics Systems
 💻 Python | PyTorch | CARLA
 
 ---
 
-## ⭐ Final Note
+# ⭐ Final Thoughts
 
-This project demonstrates a **realistic hybrid autonomy pipeline**
-used in **industry-grade self-driving research**.
+This project demonstrates how **modern autonomous driving systems combine**:
 
-.
+```
+Deep Learning
++ Classical Planning
++ Sensor Fusion
+```
+
+to achieve **robust autonomous navigation in simulation**.
 
 ---
 
+⭐ If you find this project useful, consider **starring the repository**!
+
+---
 
